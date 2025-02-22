@@ -37,6 +37,13 @@ services:
     volumes:
       - db_ml_metas_data:/var/lib/postgresql/data
 
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+
 volumes:
   db_core_users_data:
   db_core_transactions_data:
