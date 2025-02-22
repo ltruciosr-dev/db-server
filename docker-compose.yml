@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  db_core_users:
+    build: ./db_core_users
+    container_name: db_core_users
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: core_users
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db_core_users_data:/var/lib/postgresql/data
+
+  db_core_transactions:
+    build: ./db_core_transactions
+    container_name: db_core_transactions
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: core_transactions
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db_core_transactions_data:/var/lib/postgresql/data
+
+  db_ml_metas:
+    build: ./db_ml_metas
+    container_name: db_ml_metas
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_DB: ml_metas
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db_ml_metas_data:/var/lib/postgresql/data
+
+volumes:
+  db_core_users_data:
+  db_core_transactions_data:
+  db_ml_metas_data:
